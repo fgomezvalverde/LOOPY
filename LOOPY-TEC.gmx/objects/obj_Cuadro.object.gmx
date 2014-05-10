@@ -29,8 +29,7 @@
 var id_area_sombreada=ds_list_create();  // CHECK SI ES ASI
 
 // LISTA TIENE {x1,y1,x2,y2,x3,y3...}
-//ds_list_add(id_area_sombreada,)
-
+//ds_list_add(id_area_sombreada,) andrea paso por aqui
 
 
 
