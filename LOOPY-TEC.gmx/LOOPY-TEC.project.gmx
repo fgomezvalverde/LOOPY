@@ -8,6 +8,7 @@
   <sprites name="sprites">
     <sprite>sprites\boton</sprite>
     <sprite>sprites\cuadros</sprite>
+    <sprite>sprites\spr_sombra</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_Menu</background>
@@ -27,6 +28,7 @@
       <object>objects\bot_Volver_Menu</object>
       <object>objects\obj_Cuadro</object>
     </objects>
+    <object>objects\obj_sombra</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\MenuPrincipal</room>
