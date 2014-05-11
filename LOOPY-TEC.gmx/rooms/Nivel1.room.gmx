@@ -10,7 +10,187 @@
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
-  <code></code>
+  <code>//LISTA VA CONTENER IDs DE EL AREA SOMBREADA
+var id_area_sombreada;
+var id_random_colores;
+var id_amarillo;
+var TEMP_sombreada;    // SIRVE PARA METER LOS SOMBREADOS QUE SE QUITAN EN ESTA
+//Y NO DEJAR QUE CUANDO SE PONENE LO RANDOM AL SOMBREADO NO SEAN LO YA QUITADOS DEL
+//AREA SOMBREADA
+
+id_area_sombreada  = ds_list_create();
+id_random_colores  = ds_list_create();
+id_amarillo        = ds_list_create();
+TEMP_sombreada     = ds_list_create();
+
+// DETERMINA CUANTOS CUADROS SOMBREADOS EXISTEN EN ESTE NIVEL
+var cant_cuadros_sombreados = 20;
+
+//========================================= CONFIGURACION DE COORDENADAS
+
+ds_list_add(id_random_colores,instance_position(448,256,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(512,256,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(576,256,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(640,256,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(704,256,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(768,256,obj_Cuadro));
+
+ds_list_add(id_random_colores,instance_position(384,320,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(384,384,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(384,448,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(384,512,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(384,576,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(384,640,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(384,704,obj_Cuadro));
+
+
+ds_list_add(id_random_colores,instance_position(448,704,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(512,704,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(576,704,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(640,704,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(704,704,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(768,704,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(832,704,obj_Cuadro));
+
+
+ds_list_add(id_random_colores,instance_position(832,640,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(832,576,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(832,512,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(832,448,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(832,384,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(832,320,obj_Cuadro));
+
+ds_list_add(id_random_colores,instance_position(512,384,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(576,384,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(640,384,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(704,384,obj_Cuadro));
+
+ds_list_add(id_random_colores,instance_position(512,448,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(512,512,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(512,576,obj_Cuadro));
+
+ds_list_add(id_random_colores,instance_position(576,576,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(640,576,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(704,576,obj_Cuadro));
+
+ds_list_add(id_random_colores,instance_position(704,512,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(704,448,obj_Cuadro));
+
+//INVERSO AMARILLO ADENTRO
+ds_list_add(id_random_colores,instance_position(576,512,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(640,448,obj_Cuadro));
+
+
+// SE PONEN LOS POSIBLES LUGARES DEL AMARILLO
+ds_list_add(id_amarillo ,instance_position(384,256,obj_Cuadro));
+ds_list_add(id_amarillo ,instance_position(832,256,obj_Cuadro));
+ds_list_add(id_amarillo ,instance_position(576,448,obj_Cuadro));
+ds_list_add(id_amarillo ,instance_position(640,512,obj_Cuadro));
+
+// SE AGREGAN A LA LISTA TODOS LOS IDS DE LAS COORDENADAS DE AREA SOMBREADA
+
+ds_list_add(id_area_sombreada,instance_position(448,320,obj_Cuadro));
+ds_list_add(id_area_sombreada,instance_position(512,320,obj_Cuadro));
+ds_list_add(id_area_sombreada,instance_position(576,320,obj_Cuadro));
+ds_list_add(id_area_sombreada,instance_position(640,320,obj_Cuadro));
+ds_list_add(id_area_sombreada,instance_position(704,320,obj_Cuadro));
+ds_list_add(id_area_sombreada,instance_position(768,320,obj_Cuadro));
+ds_list_add(id_area_sombreada,instance_position(448,384,obj_Cuadro));
+ds_list_add(id_area_sombreada,instance_position(768,384,obj_Cuadro));
+ds_list_add(id_area_sombreada,instance_position(448,448,obj_Cuadro));
+ds_list_add(id_area_sombreada,instance_position(768,448,obj_Cuadro));
+
+ds_list_add(id_area_sombreada,instance_position(448,512,obj_Cuadro));
+ds_list_add(id_area_sombreada,instance_position(768,512,obj_Cuadro));
+ds_list_add(id_area_sombreada,instance_position(448,576,obj_Cuadro));
+ds_list_add(id_area_sombreada,instance_position(768,576,obj_Cuadro));
+ds_list_add(id_area_sombreada,instance_position(448,640,obj_Cuadro));
+
+
+
+ds_list_add(id_area_sombreada,instance_position(512,640,obj_Cuadro));
+ds_list_add(id_area_sombreada,instance_position(576,640,obj_Cuadro));
+ds_list_add(id_area_sombreada,instance_position(640,640,obj_Cuadro));
+ds_list_add(id_area_sombreada,instance_position(704,640,obj_Cuadro));
+ds_list_add(id_area_sombreada,instance_position(768,640,obj_Cuadro));
+
+
+//================================================ SELECCION DE COORDENADAS 
+cantidad_completado = get_Bloques_Completado(1);
+show_message(cantidad_completado);
+//SE PROCEDE A ELIMINAR ALETORIAMENTE LOS IDs DE LOS CUADROS QUE NO VAN A ESTAR EN EL AREA SOMBREADA Y AGREGARLOS AL RANDOM
+for(cont =0; cont &lt; (cant_cuadros_sombreados - cantidad_completado);cont++)
+{
+       var tamanio_actual = ds_list_size(id_area_sombreada);
+       var posicion_eliminar = floor(random(tamanio_actual));
+       var id_eliminar = ds_list_find_value(id_area_sombreada,posicion_eliminar); // SE AGARRA EL VALOR A ELIMINAR
+       ds_list_add(TEMP_sombreada,id_eliminar);
+       ds_list_delete(id_area_sombreada,posicion_eliminar);     
+}
+
+//SE SELECCIONAN LAS POSICIONES AFUERA DEL COLOR PRINCIPAL PARA COMPLETAR EL %100
+for(cont =0; cont &lt; (cant_cuadros_sombreados - cantidad_completado);cont++)
+{
+       var tamanio_actual = ds_list_size(id_random_colores);
+       var posicion_eliminar = floor(random(tamanio_actual));
+       var id_eliminar = ds_list_find_value(id_random_colores,posicion_eliminar); // SE AGARRA EL VALOR A ELIMINAR
+       ds_list_add(id_area_sombreada,id_eliminar);
+       ds_list_delete(id_random_colores,posicion_eliminar);     
+}
+
+//SE AGREGAN LOS INTERMEDIOS DESPUES DE HABER AGREGADO LOS NO** SOMBREADOS
+for(cont = 0;cont &lt; ds_list_size(TEMP_sombreada);cont++)
+{
+    var id_temporal_agregar = ds_list_find_value(TEMP_sombreada,cont);
+    ds_list_add(id_random_colores,id_temporal_agregar);
+}
+
+//SE SELECCIONA EL AMARILLO Y LOS SOBRANTES SE PONEN EN RANDOM
+for(cont =0; ds_list_size(id_amarillo) != 1;cont++)
+{
+       var tamanio_actual = ds_list_size(id_amarillo);
+       var posicion_eliminar = floor(random(tamanio_actual));
+       var id_eliminar = ds_list_find_value(id_amarillo,posicion_eliminar); // SE AGARRA EL VALOR A ELIMINAR
+       ds_list_add(id_random_colores,id_eliminar);
+       ds_list_delete(id_amarillo,posicion_eliminar);     
+}
+
+
+
+//================================================== PINTAR OBJECTOS SEGUN SELECCION
+
+//SE AGARRA CADA ID Y SE PINTA EL COLOR PRINCIPAL EN EL AREA SOMBREADA
+for(i =0;i &lt; ds_list_size(id_area_sombreada);i++)
+{
+    with ds_list_find_value(id_area_sombreada,i){
+        image_index = 1;  // ID DE COLOR PRINCIPAL
+    }
+}
+
+//SE PINTA EL AMARRILLO
+for(i =0;i &lt; ds_list_size(id_amarillo);i++)
+{
+    with ds_list_find_value(id_amarillo,i){
+        image_index = 2;  // ID DE COLOR COMODIN, SOLO DEBE CORRERSE UNA VEZ
+    }
+}
+
+//SE PINTAN TODOS LOS DEMAS COLORES
+for(i =0;i &lt; ds_list_size(id_random_colores);i++)
+{
+    with ds_list_find_value(id_random_colores,i){
+        image_index = floor(random_range(3,5));  // ID DE COLOR SECUNDARIOS
+    }
+}
+
+
+
+//============================= LIBREACION DE MEMORIA
+//SOLO SE DEJA LA LISTA DE AREA SOMBREADA
+ds_list_destroy(TEMP_sombreada);
+ds_list_destroy(id_amarillo);
+ds_list_destroy(id_random_colores);
+//++++===============================================</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <makerSettings>
@@ -35,7 +215,7 @@
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
-    <background visible="-1" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
+    <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
   </backgrounds>
@@ -50,91 +230,85 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="640" hview="480" xport="0" yport="0" wport="640" hport="480" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="bot_Volver_Menu" x="1024" y="832" name="inst_47081345" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="bot_Volver_Menu" x="1056" y="832" name="inst_40B1F847" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="bot_Volver_Menu" x="1088" y="832" name="inst_F6B214ED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="bot_Volver_Menu" x="1120" y="832" name="inst_1CD16E32" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="bot_Volver_Menu" x="1152" y="832" name="inst_B0D01748" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="bot_Volver_Menu" x="1152" y="864" name="inst_0B4F7CAC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="bot_Volver_Menu" x="1120" y="864" name="inst_F7B1C940" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="bot_Volver_Menu" x="1088" y="864" name="inst_9DFF0309" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="bot_Volver_Menu" x="1024" y="864" name="inst_EFE9305C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="bot_Volver_Menu" x="1056" y="864" name="inst_18A5DF74" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="bot_Volver_Menu" x="1184" y="832" name="inst_B62A46A6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="bot_Volver_Menu" x="1184" y="864" name="inst_7EEB8769" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="384" y="448" name="inst_837A8F59" locked="0" code="" scaleX="0.0322581008076668" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="384" y="256" name="inst_BD099295" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="448" y="256" name="inst_08E3DFD7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="512" y="256" name="inst_2C1FFF21" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="576" y="256" name="inst_8E18F793" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="640" y="256" name="inst_88E6C4F1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="704" y="256" name="inst_87FB0165" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="768" y="256" name="inst_1003BBBA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="384" y="768" name="inst_0BB775BA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="448" y="768" name="inst_A377D39D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="512" y="768" name="inst_1FAB1C88" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="576" y="768" name="inst_018C2E24" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="640" y="768" name="inst_CA89190C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="704" y="768" name="inst_5D972591" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="768" y="768" name="inst_001A3ED6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="832" y="256" name="inst_0547601F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="832" y="768" name="inst_ED95A396" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="384" y="704" name="inst_17010E95" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="384" y="640" name="inst_9BE4783C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="384" y="576" name="inst_0D62C3DE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="384" y="512" name="inst_E0366638" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="384" y="448" name="inst_525EF11B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="384" y="384" name="inst_D312AAAB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="384" y="320" name="inst_3963D554" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="832" y="320" name="inst_F508ED58" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="832" y="384" name="inst_20458027" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="832" y="448" name="inst_C1FF6D38" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="832" y="512" name="inst_A295EE57" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="832" y="576" name="inst_C2C54793" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="832" y="640" name="inst_5B3C747D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="832" y="704" name="inst_F3845AE8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="768" y="704" name="inst_B4D7A368" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="640" y="704" name="inst_2503B04F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="512" y="704" name="inst_30BB3C29" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="448" y="704" name="inst_E10B07DE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="576" y="704" name="inst_6D0EB402" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="704" y="704" name="inst_90A9027C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="768" y="640" name="inst_7266C21E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="768" y="576" name="inst_24761BBA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="704" y="576" name="inst_91E69EAE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="704" y="640" name="inst_C269D275" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="640" y="640" name="inst_454782E3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="640" y="576" name="inst_B1D6BB14" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="576" y="576" name="inst_C3249DDE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="576" y="640" name="inst_9EACC737" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="512" y="640" name="inst_B284B35B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="512" y="576" name="inst_A189D6F3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="448" y="576" name="inst_BFA2F853" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="448" y="640" name="inst_9984C4E3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="448" y="512" name="inst_51DC638F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="512" y="512" name="inst_4FDA7096" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="576" y="512" name="inst_7DF70D1A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="640" y="512" name="inst_03548852" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="704" y="512" name="inst_925E3CFF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="768" y="512" name="inst_B06CD30D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="768" y="448" name="inst_431DB52F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="704" y="448" name="inst_22679B9F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="640" y="448" name="inst_F70D33ED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="512" y="448" name="inst_A0BC3125" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="576" y="448" name="inst_F84F0287" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="448" y="448" name="inst_C2EA902B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="448" y="384" name="inst_E54A658B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="512" y="384" name="inst_73C9F8F0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="448" y="320" name="inst_5C017216" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="512" y="320" name="inst_75A325FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="576" y="320" name="inst_03CCEA88" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="576" y="384" name="inst_4EBBD2E1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="640" y="320" name="inst_8C2423A9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="640" y="384" name="inst_7E105670" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="704" y="320" name="inst_4D3F1B99" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="768" y="320" name="inst_7234BB52" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="768" y="384" name="inst_A7766821" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="704" y="384" name="inst_6469C47F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="384" y="256" name="inst_55F44D47" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="384" y="320" name="inst_3D2B98B7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="448" y="256" name="inst_46B94D29" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="512" y="256" name="inst_FB975546" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="576" y="256" name="inst_C0D1E997" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="640" y="256" name="inst_0288F020" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="704" y="256" name="inst_3ACE54CE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="768" y="256" name="inst_CEF4D49F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="832" y="256" name="inst_357A4DC2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="384" y="384" name="inst_7CFE1E5D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="384" y="448" name="inst_AC112549" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="384" y="512" name="inst_108301AF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="384" y="576" name="inst_9FB8C567" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="384" y="640" name="inst_FF93F6BD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="384" y="704" name="inst_83277213" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="448" y="704" name="inst_FBBD917B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="512" y="704" name="inst_45E7D526" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="576" y="704" name="inst_9EA50ED6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="640" y="704" name="inst_59BA1C13" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="704" y="704" name="inst_9707A416" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="768" y="704" name="inst_69CD9E3C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="832" y="704" name="inst_6DD412D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="832" y="320" name="inst_775CA7F7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="832" y="384" name="inst_84601EBB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="832" y="448" name="inst_439E0966" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="832" y="512" name="inst_501172A4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="832" y="576" name="inst_87D60259" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="832" y="640" name="inst_4DBC9A29" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="768" y="640" name="inst_4263273A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="704" y="640" name="inst_82D062DE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="640" y="640" name="inst_5EA9B23C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="576" y="640" name="inst_451E3F95" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="512" y="640" name="inst_68ACA318" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="448" y="640" name="inst_33EABA3B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="448" y="576" name="inst_561657FC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="512" y="576" name="inst_6B688424" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="576" y="576" name="inst_50033D8F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="640" y="576" name="inst_94AF49F6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="704" y="576" name="inst_1531E66C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="768" y="576" name="inst_26904B47" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="768" y="512" name="inst_CE0A69FB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="704" y="512" name="inst_B8AF045F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="640" y="512" name="inst_890778E1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="576" y="512" name="inst_C98CD24C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="512" y="512" name="inst_F6DCFBF0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="448" y="512" name="inst_3E0821B0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="448" y="448" name="inst_51E13768" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="512" y="448" name="inst_B9D1DC1A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="576" y="448" name="inst_E5934304" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="640" y="448" name="inst_F18A7087" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="704" y="448" name="inst_45424D91" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="768" y="448" name="inst_3F428B21" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="768" y="384" name="inst_6F2047BA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="704" y="384" name="inst_4E3C53F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="640" y="384" name="inst_804092EE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="576" y="384" name="inst_CB8E9F02" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="512" y="384" name="inst_BFE5D595" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="448" y="384" name="inst_EC0C1AC2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="448" y="320" name="inst_89F13E52" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="512" y="320" name="inst_8DD8C809" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="576" y="320" name="inst_AF35AA28" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="640" y="320" name="inst_1BD43A4B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="704" y="320" name="inst_A87F47E1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="768" y="320" name="inst_D57CA084" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="bot_Volver_Menu" x="1024" y="832" name="inst_F40540E4" locked="0" code="" scaleX="2" scaleY="0" colour="4294967295" rotation="0"/>
+    <instance objName="bot_Volver_Menu" x="1024" y="832" name="inst_EFCB20FE" locked="0" code="" scaleX="2" scaleY="0" colour="4294967295" rotation="0"/>
+    <instance objName="bot_Volver_Menu" x="1024" y="832" name="inst_1034C2F6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="bot_Volver_Menu" x="1056" y="832" name="inst_4E364761" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="bot_Volver_Menu" x="1088" y="832" name="inst_66D2541E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="bot_Volver_Menu" x="1120" y="832" name="inst_D44465F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="bot_Volver_Menu" x="1152" y="832" name="inst_07F54100" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="bot_Volver_Menu" x="1184" y="832" name="inst_994253CD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="bot_Volver_Menu" x="1184" y="864" name="inst_465E9EBA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="bot_Volver_Menu" x="1152" y="864" name="inst_903D0C06" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="bot_Volver_Menu" x="1120" y="864" name="inst_739E6B33" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="bot_Volver_Menu" x="1088" y="864" name="inst_CB1470F0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="bot_Volver_Menu" x="1056" y="864" name="inst_B9501122" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="bot_Volver_Menu" x="1024" y="864" name="inst_B6E3B758" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="-384" y="512" name="inst_4E3CED3C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

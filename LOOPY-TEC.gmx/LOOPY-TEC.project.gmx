@@ -15,6 +15,9 @@
     <background>background\bg_Level</background>
   </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\get_Bloques_Completado.gml</script>
+  </scripts>
   <objects name="objects">
     <objects name="botones">
       <object>objects\bot_Nivel1</object>
