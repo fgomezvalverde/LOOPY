@@ -9,6 +9,7 @@
     <sprite>sprites\boton</sprite>
     <sprite>sprites\cuadros</sprite>
     <sprite>sprites\spr_sombra</sprite>
+    <sprite>sprites\spr_score</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_Menu</background>
@@ -17,7 +18,11 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\get_Bloques_Completado.gml</script>
+    <script>scripts\score_cambio.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\font_score</font>
+  </fonts>
   <objects name="objects">
     <objects name="botones">
       <object>objects\bot_Nivel1</object>
@@ -29,9 +34,10 @@
       <object>objects\bot_Cargar</object>
       <object>objects\bot_Nuevo_Nivel</object>
       <object>objects\bot_Volver_Menu</object>
-      <object>objects\obj_Cuadro</object>
     </objects>
     <object>objects\obj_sombra</object>
+    <object>objects\obj_Cuadro</object>
+    <object>objects\obj_Score_Control</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\MenuPrincipal</room>

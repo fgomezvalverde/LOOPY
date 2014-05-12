@@ -3,28 +3,28 @@
   <caption></caption>
   <width>1236</width>
   <height>902</height>
-  <vsnap>64</vsnap>
-  <hsnap>64</hsnap>
+  <vsnap>10</vsnap>
+  <hsnap>10</hsnap>
   <isometric>0</isometric>
   <speed>30</speed>
   <persistent>0</persistent>
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
   <code>//LISTA VA CONTENER IDs DE EL AREA SOMBREADA
-var id_area_sombreada;
+// ESTA VARIABLES ES GLOBAL=== global.id_area_sombreada;
 var id_random_colores;
 var id_amarillo;
 var TEMP_sombreada;    // SIRVE PARA METER LOS SOMBREADOS QUE SE QUITAN EN ESTA
 //Y NO DEJAR QUE CUANDO SE PONENE LO RANDOM AL SOMBREADO NO SEAN LO YA QUITADOS DEL
 //AREA SOMBREADA
 
-id_area_sombreada  = ds_list_create();
+ds_list_clear(global.id_area_sombreada);       // SE LIMPIA LA LISTA
 id_random_colores  = ds_list_create();
 id_amarillo        = ds_list_create();
 TEMP_sombreada     = ds_list_create();
 
 // DETERMINA CUANTOS CUADROS SOMBREADOS EXISTEN EN ESTE NIVEL
-var cant_cuadros_sombreados = 20;
+global.total = 20;
 
 //========================================= CONFIGURACION DE COORDENADAS
 
@@ -89,52 +89,52 @@ ds_list_add(id_amarillo ,instance_position(640,512,obj_Cuadro));
 
 // SE AGREGAN A LA LISTA TODOS LOS IDS DE LAS COORDENADAS DE AREA SOMBREADA
 
-ds_list_add(id_area_sombreada,instance_position(448,320,obj_Cuadro));
-ds_list_add(id_area_sombreada,instance_position(512,320,obj_Cuadro));
-ds_list_add(id_area_sombreada,instance_position(576,320,obj_Cuadro));
-ds_list_add(id_area_sombreada,instance_position(640,320,obj_Cuadro));
-ds_list_add(id_area_sombreada,instance_position(704,320,obj_Cuadro));
-ds_list_add(id_area_sombreada,instance_position(768,320,obj_Cuadro));
-ds_list_add(id_area_sombreada,instance_position(448,384,obj_Cuadro));
-ds_list_add(id_area_sombreada,instance_position(768,384,obj_Cuadro));
-ds_list_add(id_area_sombreada,instance_position(448,448,obj_Cuadro));
-ds_list_add(id_area_sombreada,instance_position(768,448,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(448,320,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(512,320,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(576,320,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(640,320,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(704,320,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(768,320,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(448,384,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(768,384,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(448,448,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(768,448,obj_Cuadro));
 
-ds_list_add(id_area_sombreada,instance_position(448,512,obj_Cuadro));
-ds_list_add(id_area_sombreada,instance_position(768,512,obj_Cuadro));
-ds_list_add(id_area_sombreada,instance_position(448,576,obj_Cuadro));
-ds_list_add(id_area_sombreada,instance_position(768,576,obj_Cuadro));
-ds_list_add(id_area_sombreada,instance_position(448,640,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(448,512,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(768,512,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(448,576,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(768,576,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(448,640,obj_Cuadro));
 
 
 
-ds_list_add(id_area_sombreada,instance_position(512,640,obj_Cuadro));
-ds_list_add(id_area_sombreada,instance_position(576,640,obj_Cuadro));
-ds_list_add(id_area_sombreada,instance_position(640,640,obj_Cuadro));
-ds_list_add(id_area_sombreada,instance_position(704,640,obj_Cuadro));
-ds_list_add(id_area_sombreada,instance_position(768,640,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(512,640,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(576,640,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(640,640,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(704,640,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(768,640,obj_Cuadro));
 
 
 //================================================ SELECCION DE COORDENADAS 
-cantidad_completado = get_Bloques_Completado(1);
-show_message(cantidad_completado);
+global.completado = get_Bloques_Completado(1);
+show_message(global.completado);
 //SE PROCEDE A ELIMINAR ALETORIAMENTE LOS IDs DE LOS CUADROS QUE NO VAN A ESTAR EN EL AREA SOMBREADA Y AGREGARLOS AL RANDOM
-for(cont =0; cont &lt; (cant_cuadros_sombreados - cantidad_completado);cont++)
+for(cont =0; cont &lt; (global.total - global.completado);cont++)
 {
-       var tamanio_actual = ds_list_size(id_area_sombreada);
+       var tamanio_actual = ds_list_size(global.id_area_sombreada);
        var posicion_eliminar = floor(random(tamanio_actual));
-       var id_eliminar = ds_list_find_value(id_area_sombreada,posicion_eliminar); // SE AGARRA EL VALOR A ELIMINAR
+       var id_eliminar = ds_list_find_value(global.id_area_sombreada,posicion_eliminar); // SE AGARRA EL VALOR A ELIMINAR
        ds_list_add(TEMP_sombreada,id_eliminar);
-       ds_list_delete(id_area_sombreada,posicion_eliminar);     
+       ds_list_delete(global.id_area_sombreada,posicion_eliminar);     
 }
 
 //SE SELECCIONAN LAS POSICIONES AFUERA DEL COLOR PRINCIPAL PARA COMPLETAR EL %100
-for(cont =0; cont &lt; (cant_cuadros_sombreados - cantidad_completado);cont++)
+for(cont =0; cont &lt; (global.total - global.completado);cont++)
 {
        var tamanio_actual = ds_list_size(id_random_colores);
        var posicion_eliminar = floor(random(tamanio_actual));
        var id_eliminar = ds_list_find_value(id_random_colores,posicion_eliminar); // SE AGARRA EL VALOR A ELIMINAR
-       ds_list_add(id_area_sombreada,id_eliminar);
+       ds_list_add(global.id_area_sombreada,id_eliminar);
        ds_list_delete(id_random_colores,posicion_eliminar);     
 }
 
@@ -160,9 +160,9 @@ for(cont =0; ds_list_size(id_amarillo) != 1;cont++)
 //================================================== PINTAR OBJECTOS SEGUN SELECCION
 
 //SE AGARRA CADA ID Y SE PINTA EL COLOR PRINCIPAL EN EL AREA SOMBREADA
-for(i =0;i &lt; ds_list_size(id_area_sombreada);i++)
+for(i =0;i &lt; ds_list_size(global.id_area_sombreada);i++)
 {
-    with ds_list_find_value(id_area_sombreada,i){
+    with ds_list_find_value(global.id_area_sombreada,i){
         image_index = 1;  // ID DE COLOR PRINCIPAL
     }
 }
@@ -288,12 +288,6 @@ ds_list_destroy(id_random_colores);
     <instance objName="obj_Cuadro" x="576" y="384" name="inst_CB8E9F02" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Cuadro" x="512" y="384" name="inst_BFE5D595" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Cuadro" x="448" y="384" name="inst_EC0C1AC2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="448" y="320" name="inst_89F13E52" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="512" y="320" name="inst_8DD8C809" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="576" y="320" name="inst_AF35AA28" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="640" y="320" name="inst_1BD43A4B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="704" y="320" name="inst_A87F47E1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="768" y="320" name="inst_D57CA084" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="bot_Volver_Menu" x="1024" y="832" name="inst_F40540E4" locked="0" code="" scaleX="2" scaleY="0" colour="4294967295" rotation="0"/>
     <instance objName="bot_Volver_Menu" x="1024" y="832" name="inst_EFCB20FE" locked="0" code="" scaleX="2" scaleY="0" colour="4294967295" rotation="0"/>
     <instance objName="bot_Volver_Menu" x="1024" y="832" name="inst_1034C2F6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -308,7 +302,33 @@ ds_list_destroy(id_random_colores);
     <instance objName="bot_Volver_Menu" x="1088" y="864" name="inst_CB1470F0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="bot_Volver_Menu" x="1056" y="864" name="inst_B9501122" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="bot_Volver_Menu" x="1024" y="864" name="inst_B6E3B758" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Cuadro" x="-384" y="512" name="inst_4E3CED3C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="448" y="320" name="inst_A9621250" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="576" y="320" name="inst_981C96BD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="640" y="320" name="inst_6744E764" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="704" y="320" name="inst_1A8C4443" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="768" y="320" name="inst_C174B9EC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Cuadro" x="512" y="320" name="inst_23F53D30" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Score_Control" x="0" y="0" name="inst_8C8536F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="448" y="320" name="inst_F66FCF3B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="512" y="320" name="inst_3780DC1A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="640" y="320" name="inst_40ABC0F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="704" y="320" name="inst_8DCC4385" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="768" y="320" name="inst_E8BACD53" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="576" y="320" name="inst_4ACDAAB8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="448" y="384" name="inst_D34C1C09" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="448" y="512" name="inst_C9BA091D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="448" y="448" name="inst_AD6BCEE5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="448" y="576" name="inst_F210D0AE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="512" y="640" name="inst_F34D4C3D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="448" y="640" name="inst_C6CE64CB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="640" y="640" name="inst_393B20DF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="704" y="640" name="inst_BA27AA7B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="576" y="640" name="inst_0401E537" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="768" y="384" name="inst_8E8023D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="768" y="448" name="inst_F9873A6D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="768" y="512" name="inst_EED33736" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="768" y="576" name="inst_70179D01" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="768" y="640" name="inst_2EBA4C66" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
