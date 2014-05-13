@@ -3,8 +3,8 @@
   <caption></caption>
   <width>1236</width>
   <height>902</height>
-  <vsnap>10</vsnap>
-  <hsnap>10</hsnap>
+  <vsnap>64</vsnap>
+  <hsnap>64</hsnap>
   <isometric>0</isometric>
   <speed>30</speed>
   <persistent>0</persistent>
@@ -14,6 +14,7 @@
 // ESTA VARIABLES ES GLOBAL=== global.id_area_sombreada;
 var id_random_colores;
 var id_amarillo;
+var id_sombreada_cambia;           // en esta lista van a cambiar los objetos identficados como los sombreados
 var TEMP_sombreada;    // SIRVE PARA METER LOS SOMBREADOS QUE SE QUITAN EN ESTA
 //Y NO DEJAR QUE CUANDO SE PONENE LO RANDOM AL SOMBREADO NO SEAN LO YA QUITADOS DEL
 //AREA SOMBREADA
@@ -21,7 +22,9 @@ var TEMP_sombreada;    // SIRVE PARA METER LOS SOMBREADOS QUE SE QUITAN EN ESTA
 ds_list_clear(global.id_area_sombreada);       // SE LIMPIA LA LISTA
 id_random_colores  = ds_list_create();
 id_amarillo        = ds_list_create();
+id_sombreada_cambia= ds_list_create();
 TEMP_sombreada     = ds_list_create();
+
 
 // DETERMINA CUANTOS CUADROS SOMBREADOS EXISTEN EN ESTE NIVEL
 global.total = 20;
@@ -115,17 +118,21 @@ ds_list_add(global.id_area_sombreada,instance_position(704,640,obj_Cuadro));
 ds_list_add(global.id_area_sombreada,instance_position(768,640,obj_Cuadro));
 
 
+//******* SE HACE COPIA DE LA LISTA SOMBREADA PARA USARLA DE GLOBAL PARA LAS COORDENADAS
+
+ds_list_copy(id_sombreada_cambia,global.id_area_sombreada);
+
 //================================================ SELECCION DE COORDENADAS 
 global.completado = get_Bloques_Completado(1);
-show_message(global.completado);
+
 //SE PROCEDE A ELIMINAR ALETORIAMENTE LOS IDs DE LOS CUADROS QUE NO VAN A ESTAR EN EL AREA SOMBREADA Y AGREGARLOS AL RANDOM
 for(cont =0; cont &lt; (global.total - global.completado);cont++)
 {
-       var tamanio_actual = ds_list_size(global.id_area_sombreada);
+       var tamanio_actual = ds_list_size(id_sombreada_cambia);
        var posicion_eliminar = floor(random(tamanio_actual));
-       var id_eliminar = ds_list_find_value(global.id_area_sombreada,posicion_eliminar); // SE AGARRA EL VALOR A ELIMINAR
+       var id_eliminar = ds_list_find_value(id_sombreada_cambia,posicion_eliminar); // SE AGARRA EL VALOR A ELIMINAR
        ds_list_add(TEMP_sombreada,id_eliminar);
-       ds_list_delete(global.id_area_sombreada,posicion_eliminar);     
+       ds_list_delete(id_sombreada_cambia,posicion_eliminar);     
 }
 
 //SE SELECCIONAN LAS POSICIONES AFUERA DEL COLOR PRINCIPAL PARA COMPLETAR EL %100
@@ -134,7 +141,7 @@ for(cont =0; cont &lt; (global.total - global.completado);cont++)
        var tamanio_actual = ds_list_size(id_random_colores);
        var posicion_eliminar = floor(random(tamanio_actual));
        var id_eliminar = ds_list_find_value(id_random_colores,posicion_eliminar); // SE AGARRA EL VALOR A ELIMINAR
-       ds_list_add(global.id_area_sombreada,id_eliminar);
+       ds_list_add(id_sombreada_cambia,id_eliminar);
        ds_list_delete(id_random_colores,posicion_eliminar);     
 }
 
@@ -160,9 +167,9 @@ for(cont =0; ds_list_size(id_amarillo) != 1;cont++)
 //================================================== PINTAR OBJECTOS SEGUN SELECCION
 
 //SE AGARRA CADA ID Y SE PINTA EL COLOR PRINCIPAL EN EL AREA SOMBREADA
-for(i =0;i &lt; ds_list_size(global.id_area_sombreada);i++)
+for(i =0;i &lt; ds_list_size(id_sombreada_cambia);i++)
 {
-    with ds_list_find_value(global.id_area_sombreada,i){
+    with ds_list_find_value(id_sombreada_cambia,i){
         image_index = 1;  // ID DE COLOR PRINCIPAL
     }
 }
@@ -183,6 +190,8 @@ for(i =0;i &lt; ds_list_size(id_random_colores);i++)
     }
 }
 
+//================================ DESACTIVA BOTON DE VICTORIA
+instance_deactivate_object(obj_ganado);
 
 
 //============================= LIBREACION DE MEMORIA
@@ -190,6 +199,7 @@ for(i =0;i &lt; ds_list_size(id_random_colores);i++)
 ds_list_destroy(TEMP_sombreada);
 ds_list_destroy(id_amarillo);
 ds_list_destroy(id_random_colores);
+ds_list_destroy(id_sombreada_cambia);
 //++++===============================================</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
@@ -329,6 +339,7 @@ ds_list_destroy(id_random_colores);
     <instance objName="obj_sombra" x="768" y="512" name="inst_EED33736" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_sombra" x="768" y="576" name="inst_70179D01" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_sombra" x="768" y="640" name="inst_2EBA4C66" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ganado" x="128" y="384" name="inst_CA1F4B35" locked="0" code="" scaleX="1.6357616186142" scaleY="2.53465342521667" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

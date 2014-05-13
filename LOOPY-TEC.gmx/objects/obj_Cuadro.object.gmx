@@ -52,10 +52,12 @@
             <kind>1</kind>
             <string>if(global.selected == -1)
 {
+    //instance_create(x,y,obj_click);           //CREA EL APUNTADOR
     global.selected = id;
 }
 else
 {
+
     if( 
         ((abs( x- (global.selected).x) == 64) &amp;&amp; y == (global.selected).y)
                 | 
@@ -77,13 +79,21 @@ else
         var temp_color = image_index;
         image_index  = (global.selected).image_index;
         (global.selected).image_index = temp_color;
-        global.selected = -1
-        score+= 10;
-    }
+        global.selected = -1;
+        
+        /*var id_click = instance_place((global.selected).x,(global.selected).y,obj_click);        // DESTRUYE EL APUNTADOR
+        with (id_click) do {instance_destroy();}*/
+        comprobar_victoria();          // CHEKEA SI YA HAY VICTORIA
+        }
     else
     {
+        /*var id_click = instance_place((global.selected).x,(global.selected).y,obj_click);        // DESTRUYE EL APUNTADOR
+        with (id_click) do {instance_destroy();}*/
         global.selected = -1;//LA COOIRDENADA QUE SE INTENTA NO LIMITA CON EL OTRO OBJETO
+    
     }
+
+
 }
 </string>
           </argument>

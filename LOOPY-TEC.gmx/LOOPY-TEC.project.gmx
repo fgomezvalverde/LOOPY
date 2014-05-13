@@ -10,6 +10,8 @@
     <sprite>sprites\cuadros</sprite>
     <sprite>sprites\spr_sombra</sprite>
     <sprite>sprites\spr_score</sprite>
+    <sprite>sprites\spr_ganado</sprite>
+    <sprite>sprites\spr_click</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_Menu</background>
@@ -19,6 +21,7 @@
   <scripts name="scripts">
     <script>scripts\get_Bloques_Completado.gml</script>
     <script>scripts\score_cambio.gml</script>
+    <script>scripts\comprobar_victoria.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_score</font>
@@ -36,7 +39,9 @@
       <object>objects\bot_Volver_Menu</object>
     </objects>
     <object>objects\obj_sombra</object>
+    <object>objects\obj_click</object>
     <object>objects\obj_Cuadro</object>
+    <object>objects\obj_ganado</object>
     <object>objects\obj_Score_Control</object>
   </objects>
   <rooms name="rooms">
