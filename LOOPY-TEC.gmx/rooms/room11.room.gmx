@@ -30,88 +30,92 @@ TEMP_sombreada     = ds_list_create();
 global.total = 20;
 
 //========================================= CONFIGURACION DE COORDENADAS
-ds_list_add(id_random_colores,instance_position(384,256,obj_Cuadro));
+
 ds_list_add(id_random_colores,instance_position(448,256,obj_Cuadro));
 ds_list_add(id_random_colores,instance_position(512,256,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(576,256,obj_Cuadro));
 ds_list_add(id_random_colores,instance_position(640,256,obj_Cuadro));
 ds_list_add(id_random_colores,instance_position(704,256,obj_Cuadro));
 ds_list_add(id_random_colores,instance_position(768,256,obj_Cuadro));
-ds_list_add(id_random_colores,instance_position(832,256,obj_Cuadro));
 
 ds_list_add(id_random_colores,instance_position(384,320,obj_Cuadro));
-ds_list_add(id_random_colores,instance_position(448,320,obj_Cuadro));
-ds_list_add(id_random_colores,instance_position(512,320,obj_Cuadro));
-ds_list_add(id_random_colores,instance_position(704,320,obj_Cuadro));
-ds_list_add(id_random_colores,instance_position(832,320,obj_Cuadro));
-
 ds_list_add(id_random_colores,instance_position(384,384,obj_Cuadro));
-ds_list_add(id_random_colores,instance_position(448,384,obj_Cuadro));
-ds_list_add(id_random_colores,instance_position(768,384,obj_Cuadro));
-ds_list_add(id_random_colores,instance_position(832,384,obj_Cuadro));
-
 ds_list_add(id_random_colores,instance_position(384,448,obj_Cuadro));
-ds_list_add(id_random_colores,instance_position(512,448,obj_Cuadro));
-ds_list_add(id_random_colores,instance_position(704,448,obj_Cuadro));
-ds_list_add(id_random_colores,instance_position(832,448,obj_Cuadro));
-
 ds_list_add(id_random_colores,instance_position(384,512,obj_Cuadro));
-ds_list_add(id_random_colores,instance_position(832,512,obj_Cuadro));
-
 ds_list_add(id_random_colores,instance_position(384,576,obj_Cuadro));
-ds_list_add(id_random_colores,instance_position(448,576,obj_Cuadro));
-ds_list_add(id_random_colores,instance_position(512,576,obj_Cuadro));
-ds_list_add(id_random_colores,instance_position(704,576,obj_Cuadro));
-ds_list_add(id_random_colores,instance_position(832,576,obj_Cuadro));
-
 ds_list_add(id_random_colores,instance_position(384,640,obj_Cuadro));
-ds_list_add(id_random_colores,instance_position(448,640,obj_Cuadro));
-ds_list_add(id_random_colores,instance_position(576,640,obj_Cuadro));
-ds_list_add(id_random_colores,instance_position(768,640,obj_Cuadro));
-ds_list_add(id_random_colores,instance_position(832,640,obj_Cuadro));
-
 ds_list_add(id_random_colores,instance_position(384,704,obj_Cuadro));
+
+
 ds_list_add(id_random_colores,instance_position(448,704,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(512,704,obj_Cuadro));
 ds_list_add(id_random_colores,instance_position(576,704,obj_Cuadro));
 ds_list_add(id_random_colores,instance_position(640,704,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(704,704,obj_Cuadro));
 ds_list_add(id_random_colores,instance_position(768,704,obj_Cuadro));
 ds_list_add(id_random_colores,instance_position(832,704,obj_Cuadro));
 
 
+ds_list_add(id_random_colores,instance_position(832,640,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(832,576,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(832,512,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(832,448,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(832,384,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(832,320,obj_Cuadro));
+
+ds_list_add(id_random_colores,instance_position(512,384,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(576,384,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(640,384,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(704,384,obj_Cuadro));
+
+ds_list_add(id_random_colores,instance_position(512,448,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(512,512,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(512,576,obj_Cuadro));
+
+ds_list_add(id_random_colores,instance_position(576,576,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(640,576,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(704,576,obj_Cuadro));
+
+ds_list_add(id_random_colores,instance_position(704,512,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(704,448,obj_Cuadro));
+
+//INVERSO AMARILLO ADENTRO
+ds_list_add(id_random_colores,instance_position(576,512,obj_Cuadro));
+ds_list_add(id_random_colores,instance_position(640,448,obj_Cuadro));
+
 
 // SE PONEN LOS POSIBLES LUGARES DEL AMARILLO
-ds_list_add(id_amarillo ,instance_position(576,256,obj_Cuadro));
-ds_list_add(id_amarillo ,instance_position(768,320,obj_Cuadro));
-ds_list_add(id_amarillo ,instance_position(768,448,obj_Cuadro));
-ds_list_add(id_amarillo ,instance_position(768,576,obj_Cuadro));
-ds_list_add(id_amarillo ,instance_position(640,640,obj_Cuadro));
-ds_list_add(id_amarillo ,instance_position(448,448,obj_Cuadro));
+ds_list_add(id_amarillo ,instance_position(384,256,obj_Cuadro));
+ds_list_add(id_amarillo ,instance_position(832,256,obj_Cuadro));
+ds_list_add(id_amarillo ,instance_position(576,448,obj_Cuadro));
+ds_list_add(id_amarillo ,instance_position(640,512,obj_Cuadro));
 
 // SE AGREGAN A LA LISTA TODOS LOS IDS DE LAS COORDENADAS DE AREA SOMBREADA
 
+ds_list_add(global.id_area_sombreada,instance_position(448,320,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(512,320,obj_Cuadro));
 ds_list_add(global.id_area_sombreada,instance_position(576,320,obj_Cuadro));
 ds_list_add(global.id_area_sombreada,instance_position(640,320,obj_Cuadro));
-ds_list_add(global.id_area_sombreada,instance_position(512,384,obj_Cuadro));
-ds_list_add(global.id_area_sombreada,instance_position(576,384,obj_Cuadro));
-
-ds_list_add(global.id_area_sombreada,instance_position(640,384,obj_Cuadro));
-ds_list_add(global.id_area_sombreada,instance_position(704,384,obj_Cuadro));
-ds_list_add(global.id_area_sombreada,instance_position(576,448,obj_Cuadro));
-ds_list_add(global.id_area_sombreada,instance_position(640,448,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(704,320,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(768,320,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(448,384,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(768,384,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(448,448,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(768,448,obj_Cuadro));
 
 ds_list_add(global.id_area_sombreada,instance_position(448,512,obj_Cuadro));
-ds_list_add(global.id_area_sombreada,instance_position(512,512,obj_Cuadro));
-ds_list_add(global.id_area_sombreada,instance_position(576,512,obj_Cuadro));
-ds_list_add(global.id_area_sombreada,instance_position(640,512,obj_Cuadro));
-
-ds_list_add(global.id_area_sombreada,instance_position(704,512,obj_Cuadro));
 ds_list_add(global.id_area_sombreada,instance_position(768,512,obj_Cuadro));
-ds_list_add(global.id_area_sombreada,instance_position(576,576,obj_Cuadro));
-ds_list_add(global.id_area_sombreada,instance_position(640,576,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(448,576,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(768,576,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(448,640,obj_Cuadro));
+
+
 
 ds_list_add(global.id_area_sombreada,instance_position(512,640,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(576,640,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(640,640,obj_Cuadro));
 ds_list_add(global.id_area_sombreada,instance_position(704,640,obj_Cuadro));
-ds_list_add(global.id_area_sombreada,instance_position(512,704,obj_Cuadro));
-ds_list_add(global.id_area_sombreada,instance_position(704,704,obj_Cuadro));
+ds_list_add(global.id_area_sombreada,instance_position(768,640,obj_Cuadro));
 
 
 //******* SE HACE COPIA DE LA LISTA SOMBREADA PARA USARLA DE GLOBAL PARA LAS COORDENADAS
@@ -315,27 +319,27 @@ ds_list_destroy(id_sombreada_cambia);
     <instance objName="obj_Cuadro" x="768" y="320" name="inst_C174B9EC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Cuadro" x="512" y="320" name="inst_23F53D30" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Score_Control" x="0" y="0" name="inst_8C8536F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sombra" x="576" y="320" name="inst_0D9CB8E5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sombra" x="640" y="320" name="inst_8301AA4F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sombra" x="704" y="384" name="inst_6D6E90ED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sombra" x="640" y="384" name="inst_8F5D74AE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sombra" x="576" y="384" name="inst_2C543711" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sombra" x="512" y="384" name="inst_3A43CC1D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sombra" x="576" y="448" name="inst_72F6EF51" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sombra" x="640" y="448" name="inst_C42B3EE7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sombra" x="448" y="512" name="inst_D173400C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sombra" x="512" y="512" name="inst_CF427332" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sombra" x="576" y="512" name="inst_88035C00" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sombra" x="640" y="512" name="inst_5B5B300B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sombra" x="704" y="512" name="inst_37122DA9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sombra" x="768" y="512" name="inst_0DBBE82A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sombra" x="576" y="576" name="inst_AD2936C3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sombra" x="640" y="576" name="inst_B0E43F0F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sombra" x="704" y="640" name="inst_BDEF951F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sombra" x="704" y="704" name="inst_62C32E0E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sombra" x="512" y="640" name="inst_414FEEAC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_sombra" x="512" y="704" name="inst_80F9DEE3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_ganado" x="320" y="448" name="inst_1826DE4A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="448" y="320" name="inst_F66FCF3B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="512" y="320" name="inst_3780DC1A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="640" y="320" name="inst_40ABC0F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="704" y="320" name="inst_8DCC4385" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="768" y="320" name="inst_E8BACD53" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="576" y="320" name="inst_4ACDAAB8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="448" y="384" name="inst_D34C1C09" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="448" y="512" name="inst_C9BA091D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="448" y="448" name="inst_AD6BCEE5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="448" y="576" name="inst_F210D0AE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="512" y="640" name="inst_F34D4C3D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="448" y="640" name="inst_C6CE64CB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="640" y="640" name="inst_393B20DF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="704" y="640" name="inst_BA27AA7B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="576" y="640" name="inst_0401E537" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="768" y="384" name="inst_8E8023D2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="768" y="448" name="inst_F9873A6D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="768" y="512" name="inst_EED33736" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="768" y="576" name="inst_70179D01" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="768" y="640" name="inst_2EBA4C66" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_ganado" x="128" y="384" name="inst_CA1F4B35" locked="0" code="" scaleX="1.6357616186142" scaleY="2.53465342521667" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

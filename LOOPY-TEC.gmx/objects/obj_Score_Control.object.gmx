@@ -50,7 +50,7 @@
             <kind>1</kind>
             <string>draw_set_font(font_score);
 draw_text(1050,90,score);
-draw_text(120,90,string((global.completado*100)/global.total)+ "%");
+draw_text(120,90,string((floor(global.completado*100)/global.total))+ "%");
 </string>
           </argument>
         </arguments>
