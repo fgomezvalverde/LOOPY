@@ -27,13 +27,12 @@ TEMP_sombreada     = ds_list_create();
 
 
 // DETERMINA CUANTOS CUADROS SOMBREADOS EXISTEN EN ESTE NIVEL
-global.total = 19;
+global.total = 20;
 
 //========================================= CONFIGURACION DE COORDENADAS
 ds_list_add(id_random_colores,instance_position(384,256,obj_Cuadro));
 ds_list_add(id_random_colores,instance_position(448,256,obj_Cuadro));
 ds_list_add(id_random_colores,instance_position(512,256,obj_Cuadro));
-ds_list_add(id_random_colores,instance_position(576,256,obj_Cuadro));
 ds_list_add(id_random_colores,instance_position(640,256,obj_Cuadro));
 ds_list_add(id_random_colores,instance_position(704,256,obj_Cuadro));
 ds_list_add(id_random_colores,instance_position(832,256,obj_Cuadro));
@@ -86,6 +85,9 @@ ds_list_add(id_amarillo ,instance_position(448,640,obj_Cuadro));
 ds_list_add(id_amarillo ,instance_position(768,576,obj_Cuadro));
 
 // SE AGREGAN A LA LISTA TODOS LOS IDS DE LAS COORDENADAS DE AREA SOMBREADA
+
+
+ds_list_add(global.id_area_sombreada,instance_position(576,256,obj_Cuadro));
 
 ds_list_add(global.id_area_sombreada,instance_position(512,320,obj_Cuadro));
 ds_list_add(global.id_area_sombreada,instance_position(576,320,obj_Cuadro));
@@ -194,7 +196,8 @@ ds_list_destroy(TEMP_sombreada);
 ds_list_destroy(id_amarillo);
 ds_list_destroy(id_random_colores);
 ds_list_destroy(id_sombreada_cambia);
-//++++===============================================</code>
+// SET DE SCORE POR NIVEL==========================
+score = 180;</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <makerSettings>
@@ -332,6 +335,7 @@ ds_list_destroy(id_sombreada_cambia);
     <instance objName="obj_sombra" x="576" y="384" name="inst_8A78DEB7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_sombra" x="512" y="384" name="inst_B9A96048" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_sombra" x="576" y="512" name="inst_32CA23D7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="576" y="256" name="inst_3C93A108" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ganado" x="320" y="448" name="inst_8907E972" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>

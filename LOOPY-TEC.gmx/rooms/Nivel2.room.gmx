@@ -27,7 +27,7 @@ TEMP_sombreada     = ds_list_create();
 
 
 // DETERMINA CUANTOS CUADROS SOMBREADOS EXISTEN EN ESTE NIVEL
-global.total = 22;
+global.total = 24;
 
 //========================================= CONFIGURACION DE COORDENADAS
 
@@ -56,12 +56,10 @@ ds_list_add(id_random_colores,instance_position(832,384,obj_Cuadro));
 ds_list_add(id_random_colores,instance_position(448,448,obj_Cuadro));
 
 ds_list_add(id_random_colores,instance_position(576,448,obj_Cuadro));
-ds_list_add(id_random_colores,instance_position(704,448,obj_Cuadro));
 ds_list_add(id_random_colores,instance_position(384,512,obj_Cuadro));
 ds_list_add(id_random_colores,instance_position(512,512,obj_Cuadro));
 ds_list_add(id_random_colores,instance_position(576,512,obj_Cuadro));
 
-ds_list_add(id_random_colores,instance_position(704,512,obj_Cuadro));
 ds_list_add(id_random_colores,instance_position(384,576,obj_Cuadro));
 ds_list_add(id_random_colores,instance_position(832,576,obj_Cuadro));
 ds_list_add(id_random_colores,instance_position(448,640,obj_Cuadro));
@@ -85,8 +83,6 @@ ds_list_add(id_amarillo ,instance_position(768,704,obj_Cuadro));
 
 // SE AGREGAN A LA LISTA TODOS LOS IDS DE LAS COORDENADAS DE AREA SOMBREADA
 
-
-
 ds_list_add(global.id_area_sombreada,instance_position(384,384,obj_Cuadro));
 ds_list_add(global.id_area_sombreada,instance_position(384,448,obj_Cuadro));
 ds_list_add(global.id_area_sombreada,instance_position(448,512,obj_Cuadro));
@@ -103,10 +99,14 @@ ds_list_add(global.id_area_sombreada,instance_position(512,640,obj_Cuadro));
 ds_list_add(global.id_area_sombreada,instance_position(576,640,obj_Cuadro));
 ds_list_add(global.id_area_sombreada,instance_position(640,640,obj_Cuadro));
 
+
+ds_list_add(global.id_area_sombreada,instance_position(704,448,obj_Cuadro));
 ds_list_add(global.id_area_sombreada,instance_position(704,640,obj_Cuadro));
 ds_list_add(global.id_area_sombreada,instance_position(704,704,obj_Cuadro));
 ds_list_add(global.id_area_sombreada,instance_position(512,704,obj_Cuadro));
 
+
+ds_list_add(global.id_area_sombreada,instance_position(704,512,obj_Cuadro));
 ds_list_add(global.id_area_sombreada,instance_position(768,512,obj_Cuadro));
 ds_list_add(global.id_area_sombreada,instance_position(832,512,obj_Cuadro));
 ds_list_add(global.id_area_sombreada,instance_position(768,448,obj_Cuadro));
@@ -200,7 +200,9 @@ ds_list_destroy(TEMP_sombreada);
 ds_list_destroy(id_amarillo);
 ds_list_destroy(id_random_colores);
 ds_list_destroy(id_sombreada_cambia);
-//++++===============================================</code>
+
+// SET DE SCORE POR NIVEL==========================
+score = 232;</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <makerSettings>
@@ -341,6 +343,8 @@ ds_list_destroy(id_sombreada_cambia);
     <instance objName="obj_sombra" x="704" y="640" name="inst_84AA2375" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_sombra" x="704" y="704" name="inst_C72787E1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_sombra" x="512" y="704" name="inst_3C939F4C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="704" y="448" name="inst_DCBE5FDD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_sombra" x="704" y="512" name="inst_E764B60D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ganado" x="320" y="448" name="inst_CBB78BAE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>

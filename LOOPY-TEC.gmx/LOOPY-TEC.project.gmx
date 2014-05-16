@@ -47,7 +47,6 @@
   <rooms name="rooms">
     <room>rooms\MenuPrincipal</room>
     <room>rooms\Nivel1</room>
-    <room>rooms\room11</room>
     <room>rooms\Nivel2</room>
     <room>rooms\Nivel3</room>
     <room>rooms\Nivel4</room>
