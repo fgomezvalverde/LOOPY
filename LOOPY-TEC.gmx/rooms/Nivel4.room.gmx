@@ -119,7 +119,7 @@ ds_list_add(global.id_area_sombreada,instance_position(576,704,obj_Cuadro));
 ds_list_copy(id_sombreada_cambia,global.id_area_sombreada);
 
 //================================================ SELECCION DE COORDENADAS 
-global.completado = get_Bloques_Completado(1);
+global.completado = get_Bloques_Completado(4);
 
 //SE PROCEDE A ELIMINAR ALETORIAMENTE LOS IDs DE LOS CUADROS QUE NO VAN A ESTAR EN EL AREA SOMBREADA Y AGREGARLOS AL RANDOM
 for(cont =0; cont &lt; (global.total - global.completado);cont++)
