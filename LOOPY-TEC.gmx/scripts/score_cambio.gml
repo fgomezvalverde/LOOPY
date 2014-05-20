@@ -70,7 +70,7 @@ else if( ((argument0).image_index==2 ) && ((argument1).image_index ==1))    // c
        score -= valor_movimiento; 
     }
 }
-else if( ((argument0).image_index>2 ) && ((argument1).image_index >2))    // caso 3;normal -> amarillo
+else if( ((argument0).image_index>2 ) && ((argument1).image_index ==2))    // caso 3;normal -> amarillo
 {
     if( (ds_list_find_index(global.id_area_sombreada,argument0)!=-1) &&(ds_list_find_index(global.id_area_sombreada,argument1)!=-1) )    // CASO DE MOVIMIENTO EN AREA SOMBREADA
     {

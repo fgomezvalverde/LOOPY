@@ -43,8 +43,11 @@
     <object>objects\obj_Cuadro</object>
     <object>objects\obj_ganado</object>
     <object>objects\obj_Score_Control</object>
+    <object>objects\obj_change</object>
+    <object>objects\obj_ScoreGeneral_Control</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\inicio</room>
     <room>rooms\MenuPrincipal</room>
     <room>rooms\Nivel1</room>
     <room>rooms\Nivel2</room>
